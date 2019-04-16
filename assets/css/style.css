@@ -1,0 +1,78 @@
+body {
+    background-image: url("https://static.careers360.mobi/media/article_images/2018/11/14/Best-Books-for-AIIMS.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#book-post {
+    margin-left: 23em;
+    margin-top: 5em;
+}
+
+#book-post img {
+    width: 110%;
+    margin-left: 270%;
+    box-shadow: 10px 10px 5px grey
+}
+
+#book-about {
+    margin-top: 4em;
+    margin-left: -7em;
+    width: 350px;
+}
+
+.book-name h2 {
+    font-weight: bolder;
+    font-family: 'Merriweather', serif;
+}
+
+#book-about {
+    color: #9F001B;
+    font-size: 20px;
+}
+
+#book-about .author-name h4 {
+    font-family: 'Lato', sans-serif;
+}
+
+#book-about .quote-book p {
+    color: rgb(59, 25, 5)!important;
+}
+
+.second-part {
+    margin-top: 2em;
+}
+
+.choose-paragraph {
+    margin-left: 12em;
+    border-bottom: 2px solid #52020d91;
+    color: #52020de5;
+}
+
+.next-week-books {
+    margin-left: 12em;
+}
+
+.next-week-book img {
+    width: 70%;
+    height: 160px;
+    margin-top: 5px;
+}
+
+.count-button {
+    height: 33px;
+    padding:0px 18px;
+}
+
+.want-count {
+    border-radius: 50%;
+}
+.vote{
+    background-color: rgba(128, 128, 128, 0.692);
+    margin: 0 0.6px;
+}
+.vote-count{
+    color : yellow;
+}
