@@ -10,6 +10,9 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit:100,300" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,16 +21,18 @@
     <div class="container-fluid section1">
         <div class="container">
             <header>
-                <div class="row">
-                    <div class="col">
-                        <span class="sign-in">0</span>
+                <div class="row header">
+
+                    <div class="col-8 col-md-3 offset-md-7 text-right">
+                        <span class="book-word">book</span><span class="club-word">club</span>
                     </div>
-                    <div class="col">
-                        <span class="sign-in">0</span>
+                    <div class="col text-right mt-4">
+                        <span class="sign-in">Nigar</span>
                     </div>
-                    <div class="col">
-                        <button class="sign-in-btn">sign in</button>
+                    <div class="col text-right">
+                        <button class="button button5 sign-in-btn mt-4"><i class="far fa-user"></i></button>
                     </div>
+
                 </div>
             </header>
             <div class="row">
@@ -169,18 +174,17 @@
         </div> 
 
 -->
-
-<div class="container section2 d-none">
-    <div class='row'>
-        <div class="col">
-            <form id="sign-up">
-                Name:<br>
-                <input type="text" name="firstname" id="username" required><br>
-                Password:<br>
-                <input type="password" name="userpassword" id="password" required><br><br>
-                <input type="submit" value="Submit">
-              </form>
-    
+    <div class=" section2 d-none">
+        <div class="container">
+            <div class="row registration">
+                <div class="col-12 col-md-4 offset-md-1 ">
+                    <form>
+                        Name:<br>
+                        <input type="text" name="firstname" id="username"><br>
+                        Password:<br>
+                        <input type="text" name="lastname" id="password"><br><br>
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
                 <div class="row decoration-image">
                     <div class="col">
@@ -191,7 +195,40 @@
 
         </div>
     </div>
-
+    <div class="section3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form id="book-search">
+                        <input type="text" name="bookname" id="book-search-name">
+                        <button id="book-search-btn">search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img id="list-book-poster" src="">
+                </div>
+                <div class="col">
+                    <div id="book-about">
+                        <div class="list-book-title">
+                            <h2>The Kite Runner</h2>
+                        </div>
+                        <div class="list-book-author">
+                            <h4>by Khaled Hosseini</h4>
+                        </div>
+                        <div class="list-book-description">
+                            <p>“It may be unfair, but what happens in a few days, sometimes even a single day, can
+                                change
+                                the
+                                course
+                                of a whole lifetime."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
