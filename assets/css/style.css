@@ -1,4 +1,4 @@
-body {
+body .section1{
     background-image: url("https://static.careers360.mobi/media/article_images/2018/11/14/Best-Books-for-AIIMS.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -45,14 +45,10 @@ body {
     margin-top: 2em;
 }
 
-.choose-paragraph {
+.paragraph {
     margin-left: 12em;
     border-bottom: 2px solid #52020d91;
     color: #52020de5;
-}
-
-.next-week-books {
-    margin-left: 12em;
 }
 
 .next-week-book img {
@@ -63,16 +59,18 @@ body {
 
 .count-button {
     height: 33px;
-    padding:0px 18px;
+    padding: 0px 18px;
 }
 
-.want-count {
-    border-radius: 50%;
-}
-.vote{
+.vote {
     background-color: rgba(128, 128, 128, 0.692);
     margin: 0 0.6px;
 }
-.vote-count{
-    color : yellow;
+
+.vote-count {
+    color: yellow;
+}
+
+.show-list {
+    color: yellow !important;
 }
