@@ -1,4 +1,5 @@
 
+
 var config = {
     apikey: "AIzaSyAXb3Kn2gxmzUrRh1O0wlcfsNKe3uStpOM",
     authDomain: "https://bookclub-5e3c6.firebaseapp.com/",
@@ -28,3 +29,20 @@ $(".sign-in-btn").on("click", function () {
     })
 })
 
+$.ajax({
+    url: "https://www.googleapis.com/books/v1/volumes",
+    data: {
+        q: "empathy",
+        orderBy: "newest"
+    }
+}).then(function(resp) {
+    
+    for (i in resp.items) {
+        let link = resp.items[i].volumeInfo.imageLinks.thumbnail
+
+        let image = $("<img src='" + link + "' >")
+        $("#img").append(image)
+
+        console.log(resp.items)
+    }
+})
