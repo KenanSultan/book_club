@@ -1,4 +1,4 @@
-body .section1{
+body .section1 {
     background-image: url("https://static.careers360.mobi/media/article_images/2018/11/14/Best-Books-for-AIIMS.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,21 +71,63 @@ body .section1{
     color: yellow;
 }
 
-
-
 /*.section2 .registration{
     background-color: rgb(219, 219, 219);
     margin-top: 20px;
     width: 200px;
 }*/
-.section2{
-    background-color: #D7CDA1;
+
+.section2 {
+    background-color: rgba(215, 205, 161, 0.815);
 }
 
-.registration{
- padding: 10em;
+.registration {
+    padding: 10em;
 }
-.show-list a{
+
+.show-list a {
     text-decoration: none !important;
 }
 
+.header {
+    border-bottom: 2px solid #52020d5e;
+}
+
+.book-word {
+    font-family: 'Kanit', sans-serif;
+    font-size: 50px;
+    font-weight: 100;
+    color: rgb(59, 25, 5);
+}
+
+.club-word {
+    font-size: 50px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 300;
+    color: rgb(59, 25, 5);
+}
+
+.sign-in {
+    color: #52020de5;
+    margin-left: 45px;
+}
+
+.button {
+    background-color:#3d2310e8;
+    border: none;
+    color: whitesmoke;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+  }
+
+.sign-in-btn:hover {
+    background-color: rgb(134, 85, 49);
+}
+
+.button5 {
+    border-radius: 50%;
+}
