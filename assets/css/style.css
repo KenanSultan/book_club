@@ -71,6 +71,21 @@ body .section1{
     color: yellow;
 }
 
-.show-list {
-    color: yellow !important;
+
+
+/*.section2 .registration{
+    background-color: rgb(219, 219, 219);
+    margin-top: 20px;
+    width: 200px;
+}*/
+.section2{
+    background-color: #D7CDA1;
 }
+
+.registration{
+ padding: 10em;
+}
+.show-list a{
+    text-decoration: none !important;
+}
+
