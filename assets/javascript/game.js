@@ -13,7 +13,7 @@ $(".sign-in-btn").on("click", function () {
 
     $(".section2").removeClass("d-none")
     $('html, body').animate({
-        'scrollTop': $(".section2").offset().top - 60
+        'scrollTop': $(".section2").position().top
     },3000)
 
     $("#sign-up").on("submit", function (e) {
