@@ -13,7 +13,7 @@ $(".sign-in-btn").on("click", function () {
 
     $(".section2").removeClass("d-none")
     $('html, body').animate({
-        'scrollTop': $(".section2").position().top
+        'scrollTop': $(".section2").offset().top - 60
     },3000)
 
     $("#sign-up").on("submit", function (e) {
@@ -42,16 +42,17 @@ $("#book-search").on("submit", function(e) {
             q: $("#book-search-name").val()
         }
     }).then(function (resp) {
+        console.log(resp)
+        $("#search-btn-book-image").empty() 
+        for (let i = 0; i<5; i++ ) {
 
-        for (i in resp) {
-            console.log(resp[i])
             var bookUsersChoise = $("<img>")
             bookUsersChoise.attr("id","bookUsersChoise")
-            bookUsersChoise.attr("src", resp[i].volumeInfo.imageLinks.thumbnail)
+            bookUsersChoise.attr("src", resp.items[i].volumeInfo.imageLinks.thumbnail)
             var searchImageHolder = $("<div>")
-            searchImageHolder.addClass("col-md-2")
+            searchImageHolder.addClass("col")
             searchImageHolder.append(bookUsersChoise)
-            $("#search-btn-book-image").append(bookUsersChoise)
+            $("#search-btn-book-image").append(searchImageHolder)
         }
     })
 })
