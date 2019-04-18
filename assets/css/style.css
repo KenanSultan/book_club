@@ -1,5 +1,5 @@
 body .section1 {
-    background-image: url("https://static.careers360.mobi/media/article_images/2018/11/14/Best-Books-for-AIIMS.jpg");
+    background-image: url("../images/Best-Books-for-AIIMS.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -41,7 +41,7 @@ body .section1 {
     color: rgb(59, 25, 5)!important;
 }
 
-.second-part{
+.second-part {
     margin-top: 1em;
 }
 
@@ -74,10 +74,12 @@ body .section1 {
 .registration {
     padding: 10em;
 }
-#show-all-list:hover{
- color: rgb(61, 59, 23) !important;
- text-decoration: none;
+
+#show-all-list:hover {
+    color: rgb(61, 59, 23) !important;
+    text-decoration: none;
 }
+
 #show-all-list {
     color: #41020ae5 !important;
     text-decoration: underline;
@@ -85,7 +87,7 @@ body .section1 {
 
 .logo {
     border-bottom: 2px solid #52020d5e;
- margin-left: 20%;
+    margin-left: 20%;
 }
 
 .book-word {
@@ -108,7 +110,7 @@ body .section1 {
 }
 
 .button {
-    background-color:#3d2310e8;
+    background-color: #3d2310e8;
     border: none;
     color: whitesmoke;
     padding: 5px 10px;
@@ -117,19 +119,47 @@ body .section1 {
     display: inline-block;
     font-size: 15px;
     margin: 2px 2px;
-  }
+}
 
 .sign-in-btn:hover {
     background-color: rgb(134, 85, 49);
+    
 }
 
 .button5 {
     border-radius: 50%;
 }
-#sign-up{
-    color:#52020de5;
+
+#sign-up {
+    color: #52020de5;
 }
-#submit-btn{
+
+#submit-btn {
     color: #52020de5;
     margin-top: 1.5em;
+}
+
+.section3 {
+    background-color: rgb(229, 247, 247);
+    height:  200px;
+}
+
+.book-search1 {
+    margin-top: 5%;
+    margin-left: 25%;
+    padding-bottom: 2%;
+    
+}
+
+.discussion {
+    border-bottom: 2px solid #52020d91;
+}
+
+#book-search-btn {
+    color: #52020de5;
+}
+
+#discuss-word {
+    margin-top: 13%;
+    color: #52020de5;
 }
