@@ -12,9 +12,7 @@ var database = firebase.database()
 $(".sign-in-btn").on("click", function () {
 
     $(".section2").removeClass("d-none")
-    $('html, body').animate({
-        'scrollTop': $(".section2").offset().top - 60
-    },3000)
+    
 
     $("#sign-up").on("submit", function (e) {
 
@@ -23,7 +21,7 @@ $(".sign-in-btn").on("click", function () {
             name: $("#username").val(),
             password: $("#password").val()
         })
-
+        $(".sign-in").html($("#username").val())
         $("#username").val("")
         $("#password").val("")
         $(".section2").addClass("d-none")
@@ -56,5 +54,12 @@ $("#book-search").on("submit", function(e) {
         }
     })
 })
-
+$("#show-all-list").on("click", function(){
+    $( ".section3" ).removeClass("d-none")
+        $('html, body').animate({
+            scrollTop: $(".section3").offset().top
+        }, 2000)
+    
+     
+})
 //$("#bookUsersChoise").on("click", function() {})
