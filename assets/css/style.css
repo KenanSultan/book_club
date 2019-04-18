@@ -8,18 +8,18 @@ body .section1 {
 
 #book-post {
     margin-left: 23em;
-    margin-top: 5em;
+    margin-top: 3em;
 }
 
 #book-post img {
-    width: 110%;
+    width: 105%;
     margin-left: 270%;
     box-shadow: 10px 10px 5px grey
 }
 
 #book-about {
-    margin-top: 4em;
-    margin-left: -7em;
+    margin-top: 3em;
+    margin-left: -8em;
     width: 350px;
 }
 
@@ -30,7 +30,7 @@ body .section1 {
 
 #book-about {
     color: #9F001B;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 #book-about .author-name h4 {
@@ -41,8 +41,8 @@ body .section1 {
     color: rgb(59, 25, 5)!important;
 }
 
-.second-part {
-    margin-top: 2em;
+.second-part{
+    margin-top: 1em;
 }
 
 .paragraph {
@@ -71,23 +71,21 @@ body .section1 {
     color: yellow;
 }
 
-/*.section2 .registration{
-    background-color: rgb(219, 219, 219);
-    margin-top: 20px;
-    width: 200px;
-}*/
-
-
 .registration {
     padding: 10em;
 }
-
-.show-list a {
-    text-decoration: none !important;
+#show-all-list:hover{
+ color: rgb(61, 59, 23) !important;
+ text-decoration: none;
+}
+#show-all-list {
+    color: #41020ae5 !important;
+    text-decoration: underline;
 }
 
-.header {
+.logo {
     border-bottom: 2px solid #52020d5e;
+ margin-left: 20%;
 }
 
 .book-word {
@@ -127,4 +125,11 @@ body .section1 {
 
 .button5 {
     border-radius: 50%;
+}
+#sign-up{
+    color:#52020de5;
+}
+#submit-btn{
+    color: #52020de5;
+    margin-top: 1.5em;
 }
