@@ -10,39 +10,51 @@ firebase.initializeApp(config)
 var database = firebase.database()
 
 $(".sign-in-btn").on("click", function () {
-    
+
     $(".section2").removeClass("d-none")
-    
+    $('html, body').animate({
+        'scrollTop': $(".section2").offset().top - 60
+    },3000)
+
     $("#sign-up").on("submit", function (e) {
-        
+
         e.preventDefault()
-        
         database.ref("/users/").push({
             name: $("#username").val(),
             password: $("#password").val()
         })
+
+        $("#username").val("")
+        $("#password").val("")
         $(".section2").addClass("d-none")
     })
+
 
     database.ref().on("value", function (snapshot) {
         console.log(snapshot)
     })
 })
+$("#book-search").on("submit", function(e) {
+    e.preventDefault()
+    $.ajax({
+        url: "https://www.googleapis.com/books/v1/volumes",
+        data: {
+            q: $("#book-search-name").val()
+        }
+    }).then(function (resp) {
+        console.log(resp)
+        $("#search-btn-book-image").empty() 
+        for (let i = 0; i<5; i++ ) {
 
-$.ajax({
-    url: "https://www.googleapis.com/books/v1/volumes",
-    data: {
-        q: "empathy",
-        orderBy: "newest"
-    }
-}).then(function(resp) {
-    
-    for (i in resp.items) {
-        let link = resp.items[i].volumeInfo.imageLinks.thumbnail
-
-        let image = $("<img src='" + link + "' >")
-        $("#img").append(image)
-
-        console.log(resp.items)
-    }
+            var bookUsersChoise = $("<img>")
+            bookUsersChoise.attr("id","bookUsersChoise")
+            bookUsersChoise.attr("src", resp.items[i].volumeInfo.imageLinks.thumbnail)
+            var searchImageHolder = $("<div>")
+            searchImageHolder.addClass("col")
+            searchImageHolder.append(bookUsersChoise)
+            $("#search-btn-book-image").append(searchImageHolder)
+        }
+    })
 })
+
+//$("#bookUsersChoise").on("click", function() {})
