@@ -62,12 +62,42 @@ body {
 .comment-here {
     margin-top: 3%;
 }
-#comment-user-name{
- font-weight: bolder;
- color: rgb(59, 25, 5);
+
+#comment-user-name {
+    font-weight: bolder;
+    color: rgb(59, 25, 5);
 }
-#user-name-comment {
-   background-color:rgb(235, 235, 235);
+
+#comment-submit-btn {
+    margin-bottom: 1%;
+}
+
+.comment-placeholder {
+    padding-right: 65%;
+    color: rgb(59, 25, 5);
+}
+
+#comment-send-btn {
+    padding: 2px 15px;
+}
+
+.users-comments {
+    margin-bottom: 1%;
+}
+
+.name-comment-div {
+    background-color: rgb(235, 235, 235);
     border-radius: 25px;
-    color:rgb(59, 25, 5);
+    color: rgb(59, 25, 5);
+    padding-left: 7px;
+}
+
+.link-home-page {
+    color: #41020a;
+    text-decoration: underline;
+}
+
+.link-home-page:hover {
+    color: rgb(61, 59, 23) !important;
+    text-decoration: none;
 }
