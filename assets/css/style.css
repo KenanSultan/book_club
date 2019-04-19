@@ -199,8 +199,10 @@ body .section1 {
 .comment-book-name {
     font-family: 'Merriweather', serif;
 }
-.users-real-comments{
-    background-color: antiquewhite;
+.users-real-comments, .comment-input{
+    background-color: rgba(223, 223, 223, 0.753);
+    color:rgb(59, 25, 5);
     border: none;
     text-decoration: none;
+    border-radius: 25px;
 }
