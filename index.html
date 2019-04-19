@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +23,7 @@
             <header>
                 <div class="row header logo ">
 
-                    <div class="col-8 col-md-3 text-left" >
+                    <div class="col text-left">
 
                         <span class="book-word">book</span><span class="club-word">club</span>
                     </div>
@@ -95,7 +94,7 @@
                 </div>
                 <div class="col">
                     <div class="show-list text-right">
-                        <a href="#"id="show-all-list">Show all list</a>
+                        <a href="#" id="show-all-list">Show all list</a>
 
 
                     </div>
@@ -173,41 +172,52 @@
         </div>
     </div>
     </div>
-    <!--
-    <div class="container comments-page">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="book-post">
-                    <img src="https://www.readings.com.pk/Pages/Categories/BookImages/9781594632204.jpg">
+    <div class="section4">
+        <div class="container">
+            <div class="row comment-page">
+                <div clas="col">
+                    <h4 id="comment-head">Discussion</h4>
                 </div>
             </div>
-            <div class="col-md-6">y Khaled Hosseini</h4>
-            </div>
-                <div id="current-book">
-                    <div class="current-book-name">
-                        <h2>The Kite Runner</h2>
+            <div class="row comment-book-about">
+                <div class="col-2 offset-md-4">
+                    <div id="comment-book-post">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/510276c7SqL.jpg">
                     </div>
-                    <div class="author-name">
-                        <h4>by Khaled Hosseini</h4>
-                    </div>
-                    <div class="quote-book">
-                        <p>“It may be unfair, but what happens in a few days, sometimes even a single day, can
-                            change
-                            the
-                            course
-                            of a whole lifetime."</p>
+                </div>
+                <div class="col-4">
+                    <div id="current-book">
+                        <div class="comment-book-name">
+                            <h4>Desert Flower</h4>
+                        </div>
+                        <div class="comment-book-author">
+                            <h6>by Varis Drie</h6>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> 
-
-    -->
+            <div class="row">
+             <div class="col">
+                    <button class="users-real-comments">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta odit consequatur nam nulla repellat debitis eius expedita suscipit. Voluptatibus maiores laboriosam, laborum mollitia in eveniet sunt veritatis doloremque natus aperiam.</button>
+                </div>
+            </div>
+            <div class="row users-comments">
+               <div class="col offset-md-3">
+                   <input type="text" placeholder="Comment here...">
+               </div>
+               <div class="col">
+                   <button class="button button5"> <i class="far fa-paper-plane"></i> </button>
+               </div>
+            </div>
+            
+        </div>
+    </div>
     <div class="section3 d-none">
-
         <div class="container">
             <div class="row discussion">
-                <div clas="col"><h4 id="discuss-word">Choose book to discuss for next month</h4> </div>
-                
+                <div clas="col">
+                    <h4 id="discuss-word">Choose book to discuss for next month</h4>
+                </div>
                 <div class="col book-search1">
                     <form id="book-search">
                         <input type="text" name="bookname" id="book-search-name" placeholder="Enter book name">
@@ -215,11 +225,28 @@
                     </form>
                 </div>
             </div>
+<<<<<<< HEAD
           <div class="row" >
               <tbody id="booklist-table-holder"></tbody>
           </div>
+=======
+            <div class="row">
+                <table class="table table-hover book-table">
+                    <thead>
+                        <tr>
+                            <th>books</th>
+                            <th>votes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="booklist-table-holder">
+                    </tbody>
+                </table>
+            </div>
+>>>>>>> b24e3256a65b013b7c661c3cd9cf8a1728fdb8ba
         </div>
     </div>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
@@ -227,4 +254,3 @@
 </body>
 
 </html>
-
