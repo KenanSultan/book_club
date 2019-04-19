@@ -7,14 +7,48 @@ var config = {
 firebase.initializeApp(config)
 var database = firebase.database()
 
-var key = ""
-var enter = false
+function reset() {
+    key = ""
+    enter = false
+    user_name = ""
+    $(".sign-in-name").html("")
+}
+
+reset()
+
+if (localStorage.getItem("user")) {
+    var user = JSON.parse(localStorage.getItem("user"))
+    var name = user.name
+    var password = user.password
+
+    database.ref("users").once("value", function (snap) {
+        var obj = snap.val()
+        for (i in obj) {
+            if (name == obj[i].name && password == obj[i].password) {
+                key = i
+                enter = true
+                break
+            }
+        }
+        if (enter == false) {
+            alert("Wrong username or password.")
+        } else {
+            console.log("girdin")
+
+            after_login()
+        }
+    })
+}
 
 function after_login() {
-    db.ref("users/" + key).on("value", function (snap) {
+    database.ref("users/" + key).on("value", function (snap) {
         var user = snap.val()
+        user_name = user.name
         voted_books = user.votedBooks
+        $(".sign-in-name").html(user_name)
     })
+
+    $(".section2").addClass("d-none")
 }
 
 database.ref("bookOnDiscussion").on("value", function (snapshot) {
@@ -90,18 +124,29 @@ $(document).on("click", ".vote-btn", function() {
 })
 
 $(".sign-in-btn").on("click", function () {
-    $(".section2").removeClass("d-none")
+    if(enter){
+        $("#logout-btn").removeClass("d-none")
+    } else {
+        $(".section2").removeClass("d-none")
+    }
+})
+
+$("#logout-btn").on("click", function() {
+    $("#logout-btn").addClass("d-none")
+    reset()
+    localStorage.removeItem("user")
 })
 
 $("#sign-in").on("submit", function (e) {
     e.preventDefault()
     let name = $("#username").val()
-    let pass = $("#password").val()
+    let password = $("#password").val()
 
-    db.ref("users").once("value", function (snap) {
+
+    database.ref("users").once("value", function (snap) {
         var obj = snap.val()
         for (i in obj) {
-            if (name == obj[i].name && pass == obj[i].pass) {
+            if (name == obj[i].name && password == obj[i].password) {
                 key = i
                 enter = true
                 break
@@ -114,7 +159,7 @@ $("#sign-in").on("submit", function (e) {
 
             user = {
                 name,
-                pass
+                password
             }
 
             localStorage.setItem("user", JSON.stringify(user))
@@ -122,15 +167,6 @@ $("#sign-in").on("submit", function (e) {
             after_login()
         }
     })
-
-    database.ref("/users/").push({
-        name: $("#username").val(),
-        password: $("#password").val()
-    })
-    $(".sign-in-name").html($("#username").val())
-    $("#username").val("")
-    $("#password").val("")
-    $(".section2").addClass("d-none")
 })
 
 $("#book-search").on("submit", function (e) {
