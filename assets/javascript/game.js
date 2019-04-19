@@ -9,6 +9,45 @@ var config = {
 firebase.initializeApp(config)
 var database = firebase.database()
 
+database.ref("books").on("value", function (snapshot) {
+    var books = snapshot.val()
+})
+
+database.ref("votes").on("value", function (snapshot) {
+    var votes = snapshot.val()
+    arr = []
+    isbnArr = []
+
+    for (i in votes) {
+        arr.push(votes[i])
+        isbnArr.push(i)
+    }
+
+    for (let i = 1; i < arr.length; i++) {
+        while (i > 0 && arr[i].vote > arr[i - 1].vote) {
+            let x = arr[i]
+            arr[i] = arr[i - 1]
+            arr[i - 1] = x
+            i--
+        }
+    }
+
+    $("#booklist-table-holder").empty()
+    for (let i = 0; i < arr.length; i++) {
+        let column = $("<tr>").append($("<th scope='row'>").text(i + 1))
+        let buton = $("<button>").addClass("btn btn-info vote-btn").attr("data-isbn", isbnArr[i]).text("Vote")
+        column.append($("<td>").text(arr[i].name))
+        column.append($("<td>").text(arr[i].author))
+        column.append($("<td>").text(arr[i].vote))
+        column.append($("<td>").append(buton))
+        $("#booklist-table-holder").append(column)
+    }
+})
+
+$(".vote-btn").on("click", function() {
+
+})
+
 $(".sign-in-btn").on("click", function () {
     $(".section2").removeClass("d-none")
 
@@ -24,31 +63,26 @@ $(".sign-in-btn").on("click", function () {
         $("#password").val("")
         $(".section2").addClass("d-none")
     })
-
-
-    database.ref().on("value", function (snapshot) {
-        console.log(snapshot)
-    })
 })
 $("#book-search").on("submit", function (e) {
     e.preventDefault()
+    var book_name = $("#book-search-name").val()
+
     $.ajax({
         url: "https://www.googleapis.com/books/v1/volumes",
         data: {
-            q: $("#book-search-name").val()
+            q: book_name
         }
     }).then(function (resp) {
-        console.log(resp)
 
         var isbn = resp.items[0].volumeInfo.industryIdentifiers[0].identifier
 
         database.ref("/books/").once("value", function (snapshot) {
             var books = snapshot.val()
-            console.log(books)
             if (!books) {
                 database.ref("/books/" + isbn).set({
                     name: resp.items[0].volumeInfo.title,
-                    authors: resp.items[0].volumeInfo.authors[0],
+                    author: resp.items[0].volumeInfo.authors[0],
                     poster: resp.items[0].volumeInfo.imageLinks.thumbnail
                 })
             } else {
@@ -56,46 +90,30 @@ $("#book-search").on("submit", function (e) {
                     if (i != isbn) {
                         database.ref("/books/" + isbn).set({
                             name: resp.items[0].volumeInfo.title,
-                            authors: resp.items[0].volumeInfo.authors[0],
+                            author: resp.items[0].volumeInfo.authors[0],
                             poster: resp.items[0].volumeInfo.imageLinks.thumbnail
                         })
                     }
                 }
             }
         })
-        database.ref().once("value", function (snapshot) {
-            var votes = snapshot.val().votes
+        database.ref("votes").once("value", function (snapshot) {
+            var votes = snapshot.val()
             if (!votes) {
                 database.ref("/votes/" + isbn).set({
-                   // name: resp.items[0].volumeInfo.title,
-                   // authors: resp.items[0].volumeInfo.authors[0],
+                    name: resp.items[0].volumeInfo.title,
+                    author: resp.items[0].volumeInfo.authors[0],
                     vote: 0
                 })
-                var tr = $("<tr>")
-                var td1 = $("<td>")
-                td1.html(resp.items[0].volumeInfo.title) 
-                var td2 = $("<td>")
-                td2.html(resp.items[0].volumeInfo.authors[0])
-                tr.append(td1)
-                tr.append(td2)
-                $("#booklist-table-holder").append(tr)
 
             } else {
                 for (i in votes) {
                     if (i != isbn) {
                         database.ref("/votes/" + isbn).set({
-                          // name: resp.items[0].volumeInfo.title,
-                           //authors: resp.items[0].volumeInfo.authors[0],
+                            name: resp.items[0].volumeInfo.title,
+                            author: resp.items[0].volumeInfo.authors[0],
                             vote: 0
                         })
-                        var tr = $("<tr>")
-                        var td1 = $("<td>")
-                        td1.html(resp.items[0].volumeInfo.title) 
-                        var td2 = $("<td>")
-                        td2.html(resp.items[0].volumeInfo.authors[0])
-                        tr.append(td1)
-                        tr.append(td2)
-                        $("#booklist-table-holder").append(tr)
                     }
                 }
             }
