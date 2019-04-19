@@ -12,6 +12,7 @@ function reset() {
     enter = false
     user_name = ""
     $(".sign-in-name").html("")
+    sign = "in"
 }
 
 reset()
@@ -61,7 +62,7 @@ database.ref("bookOnDiscussion").on("value", function (snapshot) {
     $(".book-name").append($("<h2>").text(book.name))
     $(".author-name h4").text(book.author)
     $(".quote-book p").text(book.description)
-    
+
 })
 
 database.ref("votes").on("value", function (snapshot) {
@@ -82,8 +83,8 @@ database.ref("votes").on("value", function (snapshot) {
             arr[i] = arr[i - 1]
             arr[i - 1] = x
 
-            isbnArr[i] = isbnArr[i-1]
-            isbnArr[i-1] = y
+            isbnArr[i] = isbnArr[i - 1]
+            isbnArr[i - 1] = y
 
             i--
         }
@@ -113,25 +114,39 @@ database.ref("votes").on("value", function (snapshot) {
     }
 })
 
-$(document).on("click", ".vote-btn", function() {
+$(document).on("click", ".vote-btn", function () {
     console.log("vote", $(this).attr("data-name"))
     var isbn = $(this).attr("data-isbn")
-    var vote = parseInt($(this).attr("data-vote"))  + 1
+    var vote = parseInt($(this).attr("data-vote")) + 1
     console.log(vote)
-    database.ref("votes/"+isbn).update({
+    database.ref("votes/" + isbn).update({
         vote
     })
 })
 
+$("#sign-up-btn").on("click", function () {
+    sign = "up"
+    $("#submit-btn").attr("value", "sign up")
+    $("#sign-up-btn").addClass("d-none")
+    $("#login-btn").removeClass("d-none")
+})
+
+$("#login-btn").on("click", function () {
+    sign = "in"
+    $("#submit-btn").attr("value", "sign in")
+    $("#sign-up-btn").removeClass("d-none")
+    $("#login-btn").addClass("d-none")
+})
+
 $(".sign-in-btn").on("click", function () {
-    if(enter){
+    if (enter) {
         $("#logout-btn").removeClass("d-none")
     } else {
         $(".section2").removeClass("d-none")
     }
 })
 
-$("#logout-btn").on("click", function() {
+$("#logout-btn").on("click", function () {
     $("#logout-btn").addClass("d-none")
     reset()
     localStorage.removeItem("user")
@@ -141,32 +156,40 @@ $("#sign-in").on("submit", function (e) {
     e.preventDefault()
     let name = $("#username").val()
     let password = $("#password").val()
+    $("#username").val("")
+    $("#password").val("")
 
-
-    database.ref("users").once("value", function (snap) {
-        var obj = snap.val()
-        for (i in obj) {
-            if (name == obj[i].name && password == obj[i].password) {
-                key = i
-                enter = true
-                break
+    if (sign == "in") {
+        database.ref("users").once("value", function (snap) {
+            var obj = snap.val()
+            for (i in obj) {
+                if (name == obj[i].name && password == obj[i].password) {
+                    key = i
+                    enter = true
+                    break
+                }
             }
-        }
-        if (enter == false) {
-            alert("Wrong username or password.")
-        } else {
-            console.log("girdin")
+            if (enter == false) {
+                alert("Wrong username or password.")
+            } else {
+                console.log("girdin")
 
-            user = {
-                name,
-                password
+                user = {
+                    name,
+                    password
+                }
+
+                localStorage.setItem("user", JSON.stringify(user))
+
+                after_login()
             }
-
-            localStorage.setItem("user", JSON.stringify(user))
-
-            after_login()
-        }
-    })
+        })
+    } else if (sign == "up"){
+        database.ref("users").push({
+            name,
+            password
+        })
+    }
 })
 
 $("#book-search").on("submit", function (e) {
