@@ -9,6 +9,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/discussion.css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit:100,300" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -17,57 +18,71 @@
 
 <body>
 
-        <div class="section4">
-                <div class="container">
-                    <div class="row comment-page">
-                        <div clas="col">
-                            <h4 id="comment-head">Discussion</h4>
-                        </div>
-                    </div>
-                    <div class="row comment-book-about">
-                        <div class="col-2 offset-md-4">
-                            <div>
-                                <img id="comment-book-post"src="https://images-na.ssl-images-amazon.com/images/I/510276c7SqL.jpg">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div id="current-book">
-                                <div>
-                                    <h4 class="comment-book-name">Desert Flower</h4>
-                                </div>
-                                <div >
-                                    <h6 class="comment-book-author">by Vid="comment-book-post"aris Drie</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                     <div class="col">
-                         <div id="comment-user-name">
-                                nigar   
-                         </div>
-                            <div class="users-comments">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta odit consequatur nam nulla repellat debitis eius expedita suscipit. Voluptatibus maiores laboriosam, laborum mollitia in eveniet sunt veritatis doloremque natus aperiam.</button>
-                        </div>
-                    </div>
-                    <div class="row "> 
-                        <form id="comment-submit-btn">
-                       <div class="col offset-md-3">
-                           <input type="text" placeholder="Comment here...">
-                       </div>
-                       <div class="col">
-                           <button class="button button5"> <i class="far fa-paper-plane"></i> </button>
-                       </div>
-                    </form>
-                    </div>
-                    
+    <div class="section4">
+        <div class="container">
+            <div class="row comment-page">
+                <div clas="col">
+                    <span class="book-word">book</span><span class="club-word">discussion</span>
                 </div>
             </div>
+            <div class="row comment-book-about">
+                <div class="col-2 ">
+                    <div>
+                        <img id="comment-book-post"
+                            src="https://images-na.ssl-images-amazon.com/images/I/510276c7SqL.jpg">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div id="current-book">
+                        <div>
+                            <h4 class="comment-book-name">Desert Flower</h4>
+                        </div>
+                        <div>
+                            <h6 class="comment-book-author">by Varis Drie</h6>
+                        </div>
+                        <div class="description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo ipsum impedit commodi soluta
+                            veritatis optio atque. Esse nihil doloribus delectus nam cum quam, modi numquam reiciendis
+                            debitis, minus velit repudiandae?
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+                <form id="comment-submit-btn">
+
+                        <div class="row comment-here">
+                    <div class="col-5">
+                        <input type="text" placeholder="Comment here...">
+                    </div>
+                    <div class="col-3">
+                        <button id="comment-send-btn">send</button>
+                    </div>
+                 </div>
+                </form>
+
+            
+            <div class="row">
+                <div  id="user-name-comment" class="col">
+                    <div id="comment-user-name">
+                        Nigar
+                    </div>
+                    <div class="users-comments">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta odit
+                        consequatur nam nulla repellat debitis eius expedita suscipit. Voluptatibus maiores laboriosam,
+                        laborum mollitia in eveniet sunt veritatis doloremque natus aperiam.</button>
+                    </div>
+                </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
-    <script src="./assets/javascript/game.js"></script>
-    <script src="./assets/javascript/discussion.js"></script>
+            </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+        <script src="./assets/javascript/game.js"></script>
+        <script src="./assets/javascript/discussion.js"></script>
+  
 </body>
 
 </html>
