@@ -10,7 +10,6 @@ firebase.initializeApp(config)
 var database = firebase.database()
 
 $(".sign-in-btn").on("click", function () {
-    alert("hfdkjds")
     $(".section2").removeClass("d-none")
 
     $("#sign-up").on("submit", function (e) {
@@ -52,9 +51,6 @@ $("#book-search").on("submit", function (e) {
                     authors: resp.items[0].volumeInfo.authors[0],
                     poster: resp.items[0].volumeInfo.imageLinks.thumbnail
                 })
-                database.ref("/votes/" + isbn).set({
-                    vote: 0
-                })
             } else {
                 for (i in books) {
                     if (i != isbn) {
@@ -63,37 +59,50 @@ $("#book-search").on("submit", function (e) {
                             authors: resp.items[0].volumeInfo.authors[0],
                             poster: resp.items[0].volumeInfo.imageLinks.thumbnail
                         })
-                        database.ref("/vote/" + isbn).set({
-                            vote: 0
-                        })
                     }
                 }
             }
         })
-        database.ref("/votes/").once("value", function (snapshot) {
-            var votes = snapshot.val()
-            console.log(votes)
+        database.ref().once("value", function (snapshot) {
+            var votes = snapshot.val().votes
             if (!votes) {
                 database.ref("/votes/" + isbn).set({
+                   // name: resp.items[0].volumeInfo.title,
+                   // authors: resp.items[0].volumeInfo.authors[0],
                     vote: 0
                 })
+                var tr = $("<tr>")
+                var td1 = $("<td>")
+                td1.html(resp.items[0].volumeInfo.title) 
+                var td2 = $("<td>")
+                td2.html(resp.items[0].volumeInfo.authors[0])
+                tr.append(td1)
+                tr.append(td2)
+                $("#booklist-table-holder").append(tr)
+
             } else {
                 for (i in votes) {
                     if (i != isbn) {
-                        database.ref("/vote/" + isbn).set({
+                        database.ref("/votes/" + isbn).set({
+                          // name: resp.items[0].volumeInfo.title,
+                           //authors: resp.items[0].volumeInfo.authors[0],
                             vote: 0
                         })
+                        var tr = $("<tr>")
+                        var td1 = $("<td>")
+                        td1.html(resp.items[0].volumeInfo.title) 
+                        var td2 = $("<td>")
+                        td2.html(resp.items[0].volumeInfo.authors[0])
+                        tr.append(td1)
+                        tr.append(td2)
+                        $("#booklist-table-holder").append(tr)
                     }
                 }
             }
         })
-        $("#book-search-name").text("")
     })
-
-    //resp.items[i].volumeInfo.imageLinks.thumbnail
-
-
 })
+
 $("#show-all-list").on("click", function () {
 
     $(".section3").removeClass("d-none")
@@ -102,4 +111,3 @@ $("#show-all-list").on("click", function () {
     }, 2000)
 
 })
-//$("#bookUsersChoise").on("click", function() {})
