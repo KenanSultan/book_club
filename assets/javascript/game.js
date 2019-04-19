@@ -26,8 +26,14 @@ database.ref("votes").on("value", function (snapshot) {
     for (let i = 1; i < arr.length; i++) {
         while (i > 0 && arr[i].vote > arr[i - 1].vote) {
             let x = arr[i]
+            let y = isbnArr[i]
+
             arr[i] = arr[i - 1]
             arr[i - 1] = x
+
+            isbnArr[i] = isbnArr[i-1]
+            isbnArr[i-1] = y
+
             i--
         }
     }
@@ -35,7 +41,7 @@ database.ref("votes").on("value", function (snapshot) {
     $("#booklist-table-holder").empty()
     for (let i = 0; i < arr.length; i++) {
         let column = $("<tr>").append($("<th scope='row'>").text(i + 1))
-        let buton = $("<button>").addClass("btn btn-info vote-btn").attr("data-isbn", isbnArr[i]).text("Vote")
+        let buton = $("<button>").addClass("btn btn-info vote-btn").attr("data-isbn", isbnArr[i]).attr("data-vote", arr[i].vote).attr("data-name", arr[i].name).text("Vote")
         column.append($("<td>").text(arr[i].name))
         column.append($("<td>").text(arr[i].author))
         column.append($("<td>").text(arr[i].vote))
@@ -44,8 +50,14 @@ database.ref("votes").on("value", function (snapshot) {
     }
 })
 
-$(".vote-btn").on("click", function() {
-
+$(document).on("click", ".vote-btn", function() {
+    console.log("vote", $(this).attr("data-name"))
+    var isbn = $(this).attr("data-isbn")
+    var vote = parseInt($(this).attr("data-vote"))  + 1
+    console.log(vote)
+    database.ref("votes/"+isbn).update({
+        vote
+    })
 })
 
 $(".sign-in-btn").on("click", function () {
