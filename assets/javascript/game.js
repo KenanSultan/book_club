@@ -7,6 +7,16 @@ var config = {
 firebase.initializeApp(config)
 var database = firebase.database()
 
+var key = ""
+var enter = false
+
+function after_login() {
+    db.ref("users/" + key).on("value", function (snap) {
+        var user = snap.val()
+        voted_books = user.votedBooks
+    })
+}
+
 database.ref("bookOnDiscussion").on("value", function (snapshot) {
     var book = snapshot.val()
     console.log(book)
@@ -81,20 +91,48 @@ $(document).on("click", ".vote-btn", function() {
 
 $(".sign-in-btn").on("click", function () {
     $(".section2").removeClass("d-none")
-
-    $("#sign-up").on("submit", function (e) {
-
-        e.preventDefault()
-        database.ref("/users/").push({
-            name: $("#username").val(),
-            password: $("#password").val()
-        })
-        $(".sign-in").html($("#username").val())
-        $("#username").val("")
-        $("#password").val("")
-        $(".section2").addClass("d-none")
-    })
 })
+
+$("#sign-in").on("submit", function (e) {
+    e.preventDefault()
+    let name = $("#username").val()
+    let pass = $("#password").val()
+
+    db.ref("users").once("value", function (snap) {
+        var obj = snap.val()
+        for (i in obj) {
+            if (name == obj[i].name && pass == obj[i].pass) {
+                key = i
+                enter = true
+                break
+            }
+        }
+        if (enter == false) {
+            alert("Wrong username or password.")
+        } else {
+            console.log("girdin")
+
+            user = {
+                name,
+                pass
+            }
+
+            localStorage.setItem("user", JSON.stringify(user))
+
+            after_login()
+        }
+    })
+
+    database.ref("/users/").push({
+        name: $("#username").val(),
+        password: $("#password").val()
+    })
+    $(".sign-in-name").html($("#username").val())
+    $("#username").val("")
+    $("#password").val("")
+    $(".section2").addClass("d-none")
+})
+
 $("#book-search").on("submit", function (e) {
     e.preventDefault()
     var book_name = $("#book-search-name").val()
