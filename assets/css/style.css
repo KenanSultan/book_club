@@ -104,7 +104,7 @@ body .section1 {
     color: rgb(59, 25, 5);
 }
 
-.sign-in {
+.sign-in-name {
     color: #52020de5;
     margin-left: 45px;
 }
@@ -169,11 +169,14 @@ body .section1 {
 
 
 .link-discussion-page{
-    color: #41020ae5 ;
+    color: #41020a ;
     text-decoration: underline;
     margin-left: -26%;
 }
 .link-discussion-page:hover {
     color: rgb(61, 59, 23) !important;
     text-decoration: none;
+}
+#list5{
+    padding-bottom: 7px;
 }
