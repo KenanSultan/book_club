@@ -141,3 +141,4 @@ $("#show-all-list").on("click", function () {
     }, 2000)
 
 })
+

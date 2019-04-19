@@ -139,7 +139,7 @@ body .section1 {
 }
 
 .section3, .section4 {
-    background-color: #d5ebebb4;
+ background-color: #f8f8f8b4;
 }
 
 .book-search1 {
@@ -162,9 +162,9 @@ body .section1 {
 }
 
 .book-table {
-    background-color: #F5D773;
+    background-color: rgb(235, 235, 235);
     margin-top: 2%;
-    color: rgb(59, 25, 5);
+    color: rgb(75, 36, 13);
 }
 
 #comment-head {
